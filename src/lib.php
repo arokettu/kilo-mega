@@ -79,6 +79,13 @@ const SHORT_BINARY_PREFIXES = [
 const SCALE_METRIC = 1000;
 const SCALE_BINARY = 1024;
 
+/**
+ * @param int|float|numeric-string $number The number or numeric string being formatted
+ * @param array $prefixes Array of prefixes, you can also redefine it for your localization
+ * @param string $suffix Suffix
+ * @param int $scaleBase Typically 1000 (SCALE_METRIC) or 1024 (SCALE_BINARY)
+ * @param bool $onlyIntegers Do not expand into negative scales
+ */
 function format_metric(
     int|float|string $number,
     array $prefixes = SHORT_PREFIXES,
@@ -115,6 +122,11 @@ function format_metric(
     return sprintf("%.1f %s%s", $value, $prefix, $suffix);
 }
 
+/**
+ * @param int|float|numeric-string $number The number or numeric string being formatted
+ * @param array $prefixes Array of prefixes, you can also redefine it for your localization
+ * @param string $suffix Suffix
+ */
 function format_bytes(int|float|string $number, array $prefixes = SHORT_BINARY_PREFIXES, string $suffix = 'B'): string
 {
     return format_metric($number, $prefixes, $suffix, SCALE_BINARY, true);
