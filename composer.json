@@ -1,5 +1,6 @@
 {
     "name": "arokettu/kilo-mega",
+    "type": "library",
     "description": "A metric formatter for PHP",
     "keywords": ["formatting", "metric", "bytes"],
     "homepage": "https://sandfox.dev/php/kilo-mega.html",
