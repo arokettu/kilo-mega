@@ -1,10 +1,36 @@
 {
     "name": "arokettu/kilo-mega",
+    "description": "A metric formatter for PHP",
+    "keywords": ["formatting", "metric", "bytes"],
+    "homepage": "https://sandfox.dev/php/kilo-mega.html",
     "license": "MIT",
+    "authors": [{
+        "name": "Anton Smirnov",
+        "email": "sandfox@sandfox.me",
+        "homepage": "https://sandfox.me/",
+        "role": "developer"
+    }],
+    "support": {
+        "issues": "https://gitlab.com/sandfox/kilo-mega/-/issues",
+        "source": "https://gitlab.com/sandfox/kilo-mega",
+        "chat": "https://gitter.im/arokettu/community"
+    },
     "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
         "sort-packages": true
+    },
+    "autoload": {
+        "files": [
+            "src/lib.php"
+        ]
     },
     "require": {
         "php": "^8.0"
+    },
+    "require-dev": {
+        "sandfox.dev/code-standard": "^1",
+        "squizlabs/php_codesniffer": "*"
     }
 }
