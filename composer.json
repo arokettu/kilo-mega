@@ -1,0 +1,10 @@
+{
+    "name": "arokettu/kilo-mega",
+    "license": "MIT",
+    "config": {
+        "sort-packages": true
+    },
+    "require": {
+        "php": "^8.0"
+    }
+}
