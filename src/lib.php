@@ -97,7 +97,7 @@ function format_metric(
         throw new \InvalidArgumentException('$scaleBase must be an integer greater than 1');
     }
 
-    $scale = \intval(floor(log($number, 1000)));
+    $scale = \intval(floor(log($number, $scaleBase)));
 
     if ($scale > 10) {
         $scale = 10;
@@ -110,7 +110,7 @@ function format_metric(
     $prefix = $scale === 0 ? '' :
         $prefixes[$scale] ?? throw new \InvalidArgumentException('Missing prefix for scale ' . $scale);
 
-    $value = $number / 1000 ** $scale;
+    $value = $number / $scaleBase ** $scale;
 
     return sprintf("%.1f %s%s", $value, $prefix, $suffix);
 }
