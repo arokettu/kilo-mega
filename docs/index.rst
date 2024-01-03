@@ -41,7 +41,7 @@ The library is available as open source under the terms of the `MIT License`_.
 .. _MIT License: https://opensource.org/license/mit/
 
 .. |Packagist|  image:: https://img.shields.io/packagist/v/arokettu/kilo-mega.svg?style=flat-square
-   :target:     https://packagist.org/packages/sandfoxme/kilo-mega
+   :target:     https://packagist.org/packages/arokettu/kilo-mega
 .. |GitHub|     image:: https://img.shields.io/badge/get%20on-GitHub-informational.svg?style=flat-square&logo=github
    :target:     https://github.com/arokettu/kilo-mega
 .. |GitLab|     image:: https://img.shields.io/badge/get%20on-GitLab-informational.svg?style=flat-square&logo=gitlab
