@@ -56,4 +56,11 @@ class SettingsTest extends TestCase
 
         km\format_metric('123', scaleBase: -1);
     }
+
+    public function testSign(): void
+    {
+        self::assertEquals('+123.5 B', km\format_metric(123.456, forceSign: true));
+        self::assertEquals('-123.5 B', km\format_metric(-123.456, forceSign: true));
+        self::assertEquals('0.0 B', km\format_metric(0, forceSign: true));
+    }
 }

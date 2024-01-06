@@ -83,9 +83,11 @@ const SCALE_BINARY = 1024;
  * @param int|float|numeric-string $number The number or numeric string being formatted
  * @param array $prefixes Array of prefixes, you can also redefine it for your localization
  * @param string $suffix Suffix
+ * @param string $separator Separator string between the value and the unit
  * @param int $scaleBase Typically 1000 (SCALE_METRIC) or 1024 (SCALE_BINARY)
  * @param bool $onlyIntegers Do not expand into negative scales
  * @param bool $fixedWidth Output number will be 3 characters long (including dots)
+ * @param bool $forceSign Show + for positive values
  */
 function format_metric(
     int|float|string $number,
@@ -95,6 +97,7 @@ function format_metric(
     int $scaleBase = SCALE_METRIC,
     bool $onlyIntegers = false,
     bool $fixedWidth = false,
+    bool $forceSign = false,
 ): string {
     if (\is_string($number)) {
         if (is_numeric($number) === false) {
@@ -105,6 +108,14 @@ function format_metric(
     }
     if ($scaleBase < 1) {
         throw new \DomainException('$scaleBase must be an integer greater than 1');
+    }
+
+    $sign = '';
+    if ($number < 0) {
+        $sign = '-';
+        $number = -$number;
+    } elseif ($forceSign && $number > 0) {
+        $sign = '+';
     }
 
     $scale = \intval(floor(log($number, $scaleBase)));
@@ -123,24 +134,26 @@ function format_metric(
     }
 
     if ($onlyIntegers && $scale <= 0) {
-        return sprintf("%.0f%s%s", $number, $separator, $suffix);
+        return sprintf("%s%.0f%s%s", $sign, $number, $separator, $suffix);
     }
 
     $prefix = $scale === 0 ? '' :
         $prefixes[$scale] ?? throw new \InvalidArgumentException('Missing prefix for scale ' . $scale);
 
     if ($fixedWidth && $value > 10) {
-        return sprintf("%.0f%s%s%s", $value, $separator, $prefix, $suffix);
+        return sprintf("%s%.0f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
     }
 
-    return sprintf("%.1f%s%s%s", $value, $separator, $prefix, $suffix);
+    return sprintf("%s%.1f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
 }
 
 /**
  * @param int|float|numeric-string $number The number or numeric string being formatted
  * @param array $prefixes Array of prefixes, you can also redefine it for your localization
  * @param string $suffix Suffix
+ * @param string $separator Separator string between the value and the unit
  * @param bool $fixedWidth Output number will be 3 characters (including dots)
+ * @param bool $forceSign Show + for positive values
  */
 function format_bytes(
     int|float|string $number,
@@ -148,6 +161,7 @@ function format_bytes(
     string $suffix = 'B',
     string $separator = ' ',
     bool $fixedWidth = false,
+    bool $forceSign = false,
 ): string {
-    return format_metric($number, $prefixes, $suffix, $separator, SCALE_BINARY, true, $fixedWidth);
+    return format_metric($number, $prefixes, $suffix, $separator, SCALE_BINARY, true, $fixedWidth, $forceSign);
 }
