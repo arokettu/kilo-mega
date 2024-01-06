@@ -40,4 +40,20 @@ class SettingsTest extends TestCase
         // float string
         self::assertEquals('123.5 B', km\format_metric('123.456'));
     }
+
+    public function testNonNumericString(): void
+    {
+        $this->expectException(\DomainException::class);
+        $this->expectExceptionMessage('$number must be int, float, or numeric string');
+
+        km\format_metric('zomg teh string');
+    }
+
+    public function testNegativeScaleBase(): void
+    {
+        $this->expectException(\DomainException::class);
+        $this->expectExceptionMessage('$scaleBase must be an integer greater than 1');
+
+        km\format_metric('123', scaleBase: -1);
+    }
 }

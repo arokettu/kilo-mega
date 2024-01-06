@@ -98,13 +98,13 @@ function format_metric(
 ): string {
     if (\is_string($number)) {
         if (is_numeric($number) === false) {
-            throw new \InvalidArgumentException('$number must be int, float, or numeric string');
+            throw new \DomainException('$number must be int, float, or numeric string');
         }
 
         $number = \floatval($number);
     }
     if ($scaleBase < 1) {
-        throw new \InvalidArgumentException('$scaleBase must be an integer greater than 1');
+        throw new \DomainException('$scaleBase must be an integer greater than 1');
     }
 
     $scale = \intval(floor(log($number, $scaleBase)));
