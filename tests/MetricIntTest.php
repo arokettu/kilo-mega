@@ -10,7 +10,7 @@ use function Arokettu\KiloMega\format_metric;
 
 class MetricIntTest extends TestCase
 {
-    public function testBytes(): void
+    public function testMetric(): void
     {
         self::assertEquals('1 B', format_metric(1, onlyIntegers: true));
         self::assertEquals('12 B', format_metric(12, onlyIntegers: true));
@@ -43,7 +43,7 @@ class MetricIntTest extends TestCase
         self::assertEquals('12300000000.0 QB', format_metric(1.23e40, onlyIntegers: true)); // scale overflow
     }
 
-    public function testBytesFixed(): void
+    public function testMetricFixed(): void
     {
         self::assertEquals('1 B', format_metric(1, onlyIntegers: true, fixedWidth: true));
         self::assertEquals('12 B', format_metric(12, onlyIntegers: true, fixedWidth: true));
