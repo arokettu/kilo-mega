@@ -91,6 +91,7 @@ function format_metric(
     int|float|string $number,
     array $prefixes = SHORT_PREFIXES,
     string $suffix = 'B',
+    string $separator = ' ',
     int $scaleBase = SCALE_METRIC,
     bool $onlyIntegers = false,
     bool $fixedWidth = false,
@@ -122,17 +123,17 @@ function format_metric(
     }
 
     if ($onlyIntegers && $scale <= 0) {
-        return sprintf("%.0f %s", $number, $suffix);
+        return sprintf("%.0f%s%s", $number, $separator, $suffix);
     }
 
     $prefix = $scale === 0 ? '' :
         $prefixes[$scale] ?? throw new \InvalidArgumentException('Missing prefix for scale ' . $scale);
 
     if ($fixedWidth && $value > 10) {
-        return sprintf("%.0f %s%s", $value, $prefix, $suffix);
+        return sprintf("%.0f%s%s%s", $value, $separator, $prefix, $suffix);
     }
 
-    return sprintf("%.1f %s%s", $value, $prefix, $suffix);
+    return sprintf("%.1f%s%s%s", $value, $separator, $prefix, $suffix);
 }
 
 /**
@@ -145,7 +146,8 @@ function format_bytes(
     int|float|string $number,
     array $prefixes = SHORT_BINARY_PREFIXES,
     string $suffix = 'B',
+    string $separator = ' ',
     bool $fixedWidth = false,
 ): string {
-    return format_metric($number, $prefixes, $suffix, SCALE_BINARY, true, $fixedWidth);
+    return format_metric($number, $prefixes, $suffix, $separator, SCALE_BINARY, true, $fixedWidth);
 }

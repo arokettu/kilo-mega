@@ -22,4 +22,22 @@ class SettingsTest extends TestCase
         self::assertEquals('123.5 k', km\format_metric(123456, suffix: ''));
         self::assertEquals('123.5 kW', km\format_metric(123456, suffix: 'W'));
     }
+
+    public function testSeparator(): void
+    {
+        self::assertEquals('123.5kB', km\format_metric(123456, separator: ''));
+        self::assertEquals('123.5-kB', km\format_metric(123456, separator: '-'));
+    }
+
+    public function testTypes(): void
+    {
+        // int
+        self::assertEquals('123.5 kB', km\format_metric(123456));
+        // float
+        self::assertEquals('123.5 B', km\format_metric(123.456));
+        // int string
+        self::assertEquals('123.5 kB', km\format_metric('123456'));
+        // float string
+        self::assertEquals('123.5 B', km\format_metric('123.456'));
+    }
 }
