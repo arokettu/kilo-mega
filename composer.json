@@ -31,7 +31,9 @@
         "php": "^8.0"
     },
     "require-dev": {
-        "sandfox.dev/code-standard": "^1",
-        "squizlabs/php_codesniffer": "*"
+        "phpunit/phpunit": "^10.5",
+        "sandfox.dev/code-standard": "^1.2023.12.09",
+        "squizlabs/php_codesniffer": "*",
+        "vimeo/psalm": "^5.18"
     }
 }
