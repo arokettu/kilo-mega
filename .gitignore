@@ -2,3 +2,5 @@
 /debug
 /vendor
 /composer.lock
+/.phpunit.result.cache
+/reports

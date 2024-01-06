@@ -27,6 +27,11 @@
             "src/lib.php"
         ]
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Arokettu\\KiloMega\\Tests\\": "tests"
+        }
+    },
     "require": {
         "php": "^8.0"
     },
