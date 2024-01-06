@@ -85,6 +85,7 @@ const SCALE_BINARY = 1024;
  * @param string $suffix Suffix
  * @param int $scaleBase Typically 1000 (SCALE_METRIC) or 1024 (SCALE_BINARY)
  * @param bool $onlyIntegers Do not expand into negative scales
+ * @param bool $fixedWidth Output number will be 3 characters long (including dots)
  */
 function format_metric(
     int|float|string $number,
@@ -92,6 +93,7 @@ function format_metric(
     string $suffix = 'B',
     int $scaleBase = SCALE_METRIC,
     bool $onlyIntegers = false,
+    bool $fixedWidth = false,
 ): string {
     if (\is_string($number)) {
         if (is_numeric($number) === false) {
@@ -108,16 +110,31 @@ function format_metric(
 
     if ($scale > 10) {
         $scale = 10;
-    } elseif ($onlyIntegers && $scale <= 0) {
-        return sprintf("%.0f %s", $number, $suffix);
     } elseif ($scale < -10) {
         $scale = -10;
+    }
+
+    $value = $number / $scaleBase ** $scale;
+
+    if ($number == 1001) {
+        var_dump($value);
+    }
+
+    if ($fixedWidth && round($value) >= 1000 && $scale < 10) {
+        $scale += 1;
+        $value /= $scaleBase;
+    }
+
+    if ($onlyIntegers && $scale <= 0) {
+        return sprintf("%.0f %s", $number, $suffix);
     }
 
     $prefix = $scale === 0 ? '' :
         $prefixes[$scale] ?? throw new \InvalidArgumentException('Missing prefix for scale ' . $scale);
 
-    $value = $number / $scaleBase ** $scale;
+    if ($fixedWidth && $value > 10) {
+        return sprintf("%.0f %s%s", $value, $prefix, $suffix);
+    }
 
     return sprintf("%.1f %s%s", $value, $prefix, $suffix);
 }
@@ -126,8 +143,13 @@ function format_metric(
  * @param int|float|numeric-string $number The number or numeric string being formatted
  * @param array $prefixes Array of prefixes, you can also redefine it for your localization
  * @param string $suffix Suffix
+ * @param bool $fixedWidth Output number will be 3 characters (including dots)
  */
-function format_bytes(int|float|string $number, array $prefixes = SHORT_BINARY_PREFIXES, string $suffix = 'B'): string
-{
-    return format_metric($number, $prefixes, $suffix, SCALE_BINARY, true);
+function format_bytes(
+    int|float|string $number,
+    array $prefixes = SHORT_BINARY_PREFIXES,
+    string $suffix = 'B',
+    bool $fixedWidth = false,
+): string {
+    return format_metric($number, $prefixes, $suffix, SCALE_BINARY, true, $fixedWidth);
 }
