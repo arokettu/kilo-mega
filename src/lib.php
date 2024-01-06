@@ -116,10 +116,6 @@ function format_metric(
 
     $value = $number / $scaleBase ** $scale;
 
-    if ($number == 1001) {
-        var_dump($value);
-    }
-
     if ($fixedWidth && round($value) >= 1000 && $scale < 10) {
         $scale += 1;
         $value /= $scaleBase;
