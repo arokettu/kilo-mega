@@ -140,11 +140,22 @@ function format_metric(
     $prefix = $scale === 0 ? '' :
         $prefixes[$scale] ?? throw new \InvalidArgumentException('Missing prefix for scale ' . $scale);
 
-    if ($fixedWidth && $value > 10) {
-        return sprintf("%s%.0f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
-    }
+    if ($fixedWidth) {
+        if (round($value, 1) > 10) {
+            return sprintf("%s%.0f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
+        }
 
-    return sprintf("%s%.1f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
+        return sprintf("%s%.1f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
+    } else {
+        if (round($value) >= 100) {
+            return sprintf("%s%.0f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
+        }
+        if (round($value, 1) >= 10) {
+            return sprintf("%s%.1f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
+        }
+
+        return sprintf("%s%.2f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
+    }
 }
 
 /**
