@@ -1,8 +1,20 @@
 # KiloMega
 
-[![Packagist](https://img.shields.io/packagist/v/arokettu/kilo-mega.svg?style=flat-square)](https://packagist.org/packages/arokettu/kilo-mega)
-[![PHP](https://img.shields.io/packagist/php-v/arokettu/kilo-mega.svg?style=flat-square)](https://packagist.org/packages/arokettu/kilo-mega)
-[![Packagist](https://img.shields.io/github/license/arokettu/kilo-mega.svg?style=flat-square)][MIT License]
+[![Packagist]][Packagist Link]
+[![PHP]][Packagist Link]
+[![License]][MIT License]
+[![Gitlab CI]][Gitlab CI Link]
+[![Codecov]][Codecov Link]
+
+[Packagist]: https://img.shields.io/packagist/v/arokettu/kilo-mega.svg?style=flat-square
+[PHP]: https://img.shields.io/packagist/php-v/arokettu/kilo-mega.svg?style=flat-square
+[License]: https://img.shields.io/github/license/arokettu/kilo-mega.svg?style=flat-square
+[Gitlab CI]: https://img.shields.io/gitlab/pipeline/sandfox/kilo-mega/master.svg?style=flat-square
+[Codecov]: https://img.shields.io/codecov/c/gl/sandfox/kilo-mega?style=flat-square
+
+[Packagist Link]: https://packagist.org/packages/arokettu/kilo-mega
+[Gitlab CI Link]: https://gitlab.com/sandfox/kilo-mega/-/pipelines
+[Codecov Link]: https://codecov.io/gl/sandfox/kilo-mega/
 
 A metric formatter for PHP.
 
