@@ -2,6 +2,12 @@
 
 ## 1.x
 
+### 1.1.1
+
+*Jul 28, 2024*
+
+* Throws `BadFunctionCallException` instead of `InvalidArgumentException` if supplied with broken prefixes array
+
 ### 1.1.0
 
 *Jan 7, 2023*
