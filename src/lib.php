@@ -134,7 +134,7 @@ function format_metric(
     }
 
     if ($onlyIntegers && $scale <= 0) {
-        return sprintf("%s%.0f%s%s", $sign, $number, $separator, $suffix);
+        return \sprintf('%s%.0f%s%s', $sign, $number, $separator, $suffix);
     }
 
     $prefix = $scale === 0 ? '' :
@@ -142,19 +142,19 @@ function format_metric(
 
     if ($fixedWidth) {
         if (round($value, 1) > 10) {
-            return sprintf("%s%.0f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
+            return \sprintf('%s%.0f%s%s%s', $sign, $value, $separator, $prefix, $suffix);
         }
 
-        return sprintf("%s%.1f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
+        return \sprintf('%s%.1f%s%s%s', $sign, $value, $separator, $prefix, $suffix);
     } else {
         if (round($value) >= 100) {
-            return sprintf("%s%.0f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
+            return \sprintf('%s%.0f%s%s%s', $sign, $value, $separator, $prefix, $suffix);
         }
         if (round($value, 1) >= 10) {
-            return sprintf("%s%.1f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
+            return \sprintf('%s%.1f%s%s%s', $sign, $value, $separator, $prefix, $suffix);
         }
 
-        return sprintf("%s%.2f%s%s%s", $sign, $value, $separator, $prefix, $suffix);
+        return \sprintf('%s%.2f%s%s%s', $sign, $value, $separator, $prefix, $suffix);
     }
 }
 
