@@ -3,7 +3,7 @@ KiloMega
 
 .. highlight:: php
 
-|Packagist| |GitLab| |GitHub| |Bitbucket| |Gitea|
+|Packagist| |GitLab| |GitHub| |Codeberg| |Gitea|
 
 A metric formatter for PHP.
 
@@ -101,7 +101,7 @@ The library is available as open source under the terms of the `MIT License`_.
    :target:     https://github.com/arokettu/kilo-mega
 .. |GitLab|     image:: https://img.shields.io/badge/get%20on-GitLab-informational.svg?style=flat-square&logo=gitlab
    :target:     https://gitlab.com/sandfox/kilo-mega
-.. |Bitbucket|  image:: https://img.shields.io/badge/get%20on-Bitbucket-informational.svg?style=flat-square&logo=bitbucket
-   :target:     https://bitbucket.org/sandfox/kilo-mega
+.. |Codeberg|   image:: https://img.shields.io/badge/get%20on-Codeberg-informational.svg?style=flat-square&logo=codeberg
+   :target:     https://codeberg.org/sandfox/kilo-mega
 .. |Gitea|      image:: https://img.shields.io/badge/get%20on-Gitea-informational.svg?style=flat-square&logo=gitea
    :target:     https://sandfox.org/sandfox/kilo-mega
