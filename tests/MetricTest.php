@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @copyright 2023 Anton Smirnov
+ * @license MIT https://spdx.org/licenses/MIT.html
+ */
+
 declare(strict_types=1);
 
 namespace Arokettu\KiloMega\Tests;
@@ -8,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 use function Arokettu\KiloMega\format_metric;
 
-class MetricTest extends TestCase
+final class MetricTest extends TestCase
 {
     public function testMetricPositiveScale(): void
     {

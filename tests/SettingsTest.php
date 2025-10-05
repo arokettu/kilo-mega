@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * @copyright 2023 Anton Smirnov
+ * @license MIT https://spdx.org/licenses/MIT.html
+ */
+
 declare(strict_types=1);
 
 namespace Arokettu\KiloMega\Tests;
@@ -7,7 +12,7 @@ namespace Arokettu\KiloMega\Tests;
 use Arokettu\KiloMega as km;
 use PHPUnit\Framework\TestCase;
 
-class SettingsTest extends TestCase
+final class SettingsTest extends TestCase
 {
     public function testPrefixes(): void
     {
