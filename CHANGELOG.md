@@ -2,6 +2,11 @@
 
 ## 1.x
 
+### 1.1.2
+
+* Fixed infinite values handling (this also fixes PHP 8.5 deprecation)
+* Changed all exceptions to `ValueError`
+
 ### 1.1.1
 
 *Jul 28, 2024*
