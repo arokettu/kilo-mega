@@ -11,6 +11,7 @@ namespace Arokettu\KiloMega\Tests;
 
 use Arokettu\KiloMega as km;
 use PHPUnit\Framework\TestCase;
+use ValueError;
 
 final class SettingsTest extends TestCase
 {
@@ -48,7 +49,7 @@ final class SettingsTest extends TestCase
 
     public function testNonNumericString(): void
     {
-        $this->expectException(\DomainException::class);
+        $this->expectException(ValueError::class);
         $this->expectExceptionMessage('$number must be int, float, or numeric string');
 
         km\format_metric('zomg teh string');
@@ -56,7 +57,7 @@ final class SettingsTest extends TestCase
 
     public function testNegativeScaleBase(): void
     {
-        $this->expectException(\DomainException::class);
+        $this->expectException(ValueError::class);
         $this->expectExceptionMessage('$scaleBase must be an integer greater than 1');
 
         km\format_metric('123', scaleBase: -1);

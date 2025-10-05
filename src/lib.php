@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Arokettu\KiloMega;
 
+use ValueError;
+
 const SHORT_PREFIXES = [
     10 => 'Q',
     9 => 'R',
@@ -106,13 +108,18 @@ function format_metric(
 ): string {
     if (\is_string($number)) {
         if (is_numeric($number) === false) {
-            throw new \DomainException('$number must be int, float, or numeric string');
+            throw new ValueError('$number must be int, float, or numeric string');
         }
 
         $number = \floatval($number);
+    } elseif (\is_integer($number)) {
+        $number = \floatval($number);
+    }
+    if (is_infinite($number) || is_nan($number)) {
+        throw new ValueError('$number must be a finite value');
     }
     if ($scaleBase < 1) {
-        throw new \DomainException('$scaleBase must be an integer greater than 1');
+        throw new ValueError('$scaleBase must be an integer greater than 1');
     }
 
     $sign = '';
@@ -123,7 +130,7 @@ function format_metric(
         $sign = '+';
     }
 
-    $scale = \intval(floor(log($number, $scaleBase)));
+    $scale = $number === 0.0 ? 0 : \intval(floor(log($number, $scaleBase)));
 
     if ($scale > 10) {
         $scale = 10;
