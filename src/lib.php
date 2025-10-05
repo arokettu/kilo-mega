@@ -150,7 +150,7 @@ function format_metric(
     }
 
     $prefix = $scale === 0 ? '' :
-        $prefixes[$scale] ?? throw new \BadFunctionCallException('Missing prefix for scale ' . $scale);
+        $prefixes[$scale] ?? throw new ValueError('$prefixes array is missing prefix for scale ' . $scale);
 
     if ($fixedWidth) {
         if (round($value, 1) > 10) {
