@@ -112,7 +112,7 @@ function format_metric(
         }
 
         $number = \floatval($number);
-    } elseif (\is_integer($number)) {
+    } elseif (\is_int($number)) {
         $number = \floatval($number);
     }
     if (is_infinite($number) || is_nan($number)) {
