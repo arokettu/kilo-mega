@@ -38,7 +38,6 @@
     "require-dev": {
         "phpunit/phpunit": "^9.6",
         "sandfox.dev/code-standard": "^1.2025.09.17",
-        "squizlabs/php_codesniffer": "*",
-        "vimeo/psalm": "^5.18 || ^6"
+        "squizlabs/php_codesniffer": "*"
     }
 }
