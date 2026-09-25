@@ -36,7 +36,7 @@ test:
   parallel:
     matrix:
       - PHP_VERSION:
-          - '8.0' # lowest version
+          - '8.1' # lowest testable version
           - '8' # latest 8
 
 # coverage
